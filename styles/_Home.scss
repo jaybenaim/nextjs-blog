@@ -1,0 +1,15 @@
+$color-primary: red !important;
+
+.home {
+
+  .title {
+    a {
+      color: $color-primary;
+    }
+  }
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1400px;
+}
