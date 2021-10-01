@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 import Layout from 'components/layout'
 import { getAllPostIds, getPostById } from 'lib/posts';
+import Date from 'components/date';
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
 export const getStaticPaths = async (ctx) => {
@@ -29,11 +30,8 @@ export const getStaticProps = async ({ params }) => {
 export default function Post({
   postData
 }) {
-  // const router = useRouter()
-  // const { id } = router.query
-
   return (
-    <>
+    <div className="post container">
     <Layout>
       <Head>
         <title>{postData ? postData.title : "Post Details"}</title>
@@ -41,11 +39,11 @@ export default function Post({
 
 
       {postData && (
-        <>
+        <div className="post__item">
           <Image src="/images/profile.jpeg" height={144} width={144} alt="profile" />
           <h1>{postData.title}</h1>
-          <p>{postData.date}</p>
-        </>
+          <Date dateString={postData.date}/>
+        </div>
       )}
 
 
@@ -53,6 +51,6 @@ export default function Post({
         <a>Back to home</a>
       </Link>
     </Layout>
-    </>
+    </div>
   )
 }

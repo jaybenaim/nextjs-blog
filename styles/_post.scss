@@ -1,0 +1,12 @@
+.post {
+  display: flex;
+  justify-content: center;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    max-width: 144px;
+    margin-top: 2em;
+  }
+}

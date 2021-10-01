@@ -3,6 +3,7 @@ import { getSortedPostsData } from 'lib/posts'
 import Head from 'next/head'
 import Link from 'next/link'
 import {fetcher} from 'lib/fetcher'
+import Date from 'components/date'
 
 export const getStaticProps = async () => {
   const allPostsData = getSortedPostsData()
@@ -43,11 +44,15 @@ export default function Home({ allPostsData }) {
           <ul>
             {allPostsData && allPostsData.map(({ id, date, title }) => (
               <li key={id}>
-                {title}
-                <br />
-                {id}
-                <br />
-                {date}
+                <Link href={`posts/${id}`}>
+                  <a>
+                    {title}
+                    <br />
+                    {id}
+                    <br />
+                    <Date dateString={date} />
+                  </a>
+                </Link>
               </li>
             ))}
           </ul>
